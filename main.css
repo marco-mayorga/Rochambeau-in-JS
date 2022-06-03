@@ -1,0 +1,25 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.computer{
+    margin: 33.33%;
+    background-color: green;
+}
+
+.battle{
+    margin: 33.333%;
+    background-color: pink;
+}
+
+.player{
+    margin: 33.33%;
+    background-color: blue;
+}
