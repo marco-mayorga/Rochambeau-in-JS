@@ -62,21 +62,10 @@ function playRound(playerSelection, computerSelection){
     }else{
         // Input wasn't rock paper or scissors
         alert("Pick a valid choice")
-        // if (playerChoice === null){
-        //     playRound(playerSelection, computerSelection);
-        // }
     }
 }
 
-function game(){
-    for (let i = 0; i <= 5; i++){
-        playerSelection = playerChoice()
-        computerSelection = computerPlay();
-        let rounds = playRound(playerSelection, computerSelection)
-        console.log(`${rounds}\n`)
-    }
-}
+
 // Logs answers and winner
 // console.log(`Computer: ${computerSelection}`)
 // console.log(`Player: ${playerSelection}`)
-game()
