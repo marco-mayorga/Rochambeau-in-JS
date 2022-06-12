@@ -20,52 +20,72 @@ function computerPlay(){
     }
     return computerChoice;
 }
-//  sets computerSelection equal to computerChoice
-let computerSelection = computerPlay();
-let playerSelection = playerChoice()
 
+// Selects button classes 
+const player = document.querySelector(".player");
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+
+// Buttons for player to choose rock paper or scissors
+rockBtn.addEventListener('click', playerChoice);
+paperBtn.addEventListener('click', playerChoice);
+scissorsBtn.addEventListener('click', playerChoice);
+
+// Button functionality
 function playerChoice(){
-    // Makes a prompt for player to choose rock paper or scissors
-    let playerChoice = prompt("Choose Rock, Paper or Scissors");
-    // makes sure playerSelection is all lower case
-    playerChoice = playerChoice.toLowerCase();
-    // makes sure playerSelection first letter is upper case
-    playerChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1);
-    return playerChoice
-}
-
-function playRound(playerSelection, computerSelection){
-    // Checks if player answer is Rock paper or scissors
-    if (playerSelection === ROCK || playerSelection === PAPER || playerSelection === SCISSORS){
-        // Checks for a tie
-        if(computerSelection === playerSelection){
-            return "It's a Tie!"
-        }else{
-            // all the logic in case computer chooses rock
-            if (computerSelection === ROCK && playerSelection === PAPER){
-                return "You Win! Paper beats Rock";
-            }else if(computerSelection === ROCK && playerSelection === SCISSORS){
-                return "You Lose! Rock beats Scissors";
-             // all the logic in case computer chooses paper
-            }else if(computerSelection === PAPER && playerSelection === ROCK){
-                return "You Lose! Paper beats Rock";
-            }else if(computerSelection === PAPER && playerSelection === SCISSORS){
-                return "You Win! Scissors beats Paper";
-              // all the logic in case computer chooses scissors
-            }else if(computerSelection === SCISSORS && playerSelection === ROCK){
-                return "You Win! Rock beats Scissors";
-            }
-            else{
-                return "You Lose! Scissors beats Paper";
-            }
-        }
-    }else{
-        // Input wasn't rock paper or scissors
-        alert("Pick a valid choice")
+    // Rock Button
+    rockBtn.onclick = ()=>{
+        let playerSelection = ROCK;
+        let computerSelection = computerPlay();
+        console.log(`Computer: ${computerChoice}`);
+        console.log("Player: Rock");
+        return console.log(playRound(playerSelection, computerSelection));
+    }
+    // Paper Button
+    paperBtn.onclick = ()=>{
+        let playerSelection = PAPER;
+        let computerSelection = computerPlay();
+        console.log(`Computer: ${computerChoice}`);
+        console.log("Player: Paper");
+        return console.log(playRound(playerSelection, computerSelection));
+    }
+    // Scissors Button
+    scissorsBtn.onclick = () =>{
+        let playerSelection = SCISSORS;
+        let computerSelection = computerPlay();
+        console.log(`Computer: ${computerChoice}`);
+        console.log("Player: Scissors");
+        return console.log(playRound(playerSelection, computerSelection));
     }
 }
 
-
-// Logs answers and winner
-// console.log(`Computer: ${computerSelection}`)
-// console.log(`Player: ${playerSelection}`)
+// Game logic
+function playRound(playerSelection, computerSelection){
+        // the logic in case computer chooses rock
+        if (computerSelection === ROCK && playerSelection === PAPER){
+            document.querySelector(".computer").innerText = `${computerSelection}`
+            return document.querySelector(".battle").innerText = "You Win! Paper beats Rock";
+        }else if(computerSelection === ROCK && playerSelection === SCISSORS){
+            document.querySelector(".computer").innerText = `${computerSelection}`
+            return document.querySelector(".battle").innerText = "You Lose! Rock beats Scissors";
+        // the logic in case computer chooses paper
+        }else if(computerSelection === PAPER && playerSelection === ROCK){
+            document.querySelector(".computer").innerText = `${computerSelection}`
+            return document.querySelector(".battle").innerText = "You Lose! Paper beats Rock";
+        }else if(computerSelection === PAPER && playerSelection === SCISSORS){
+            document.querySelector(".computer").innerText = `${computerSelection}`
+            return document.querySelector(".battle").innerText = "You Win! Scissors beats Paper";
+        // the logic in case computer chooses scissors
+        }else if(computerSelection === SCISSORS && playerSelection === ROCK){
+            document.querySelector(".computer").innerText = `${computerSelection}`
+            return document.querySelector(".battle").innerText = "You Win! Rock beats Scissors";
+        }else if (computerSelection === SCISSORS && playerSelection === PAPER){
+            document.querySelector(".computer").innerText = `${computerSelection}`
+            return document.querySelector(".battle").innerText = "You Lose! Scissors beats Paper";
+        // Checks for a tie
+        }else{
+            document.querySelector(".computer").innerText = `${computerSelection}`
+            return document.querySelector(".battle").innerText = "It\'s a Tie!";
+        }
+}
