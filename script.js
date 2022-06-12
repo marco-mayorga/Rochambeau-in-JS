@@ -3,6 +3,10 @@ const ROCK = "Rock";
 const PAPER = "Paper";
 const SCISSORS = "Scissors";
 
+// Game Counters
+let playerScore = 0
+let computerScore = 0
+
 function computerPlay(){
     // Chooses a number between 0-1 (so 1-3) 
     computerChoice = Math.floor(Math.random() *3);
@@ -60,23 +64,35 @@ function playRound(playerSelection, computerSelection){
         if (computerSelection === ROCK && playerSelection === PAPER){
             document.querySelector(".computer").innerText = `${computerSelection}`
             document.querySelector(".battle").innerText = "You Win! Paper beats Rock";
+            playerScore += 1
+            document.querySelector(".playerScore").innerText = `Player Score: ${playerScore}`
         }else if(computerSelection === ROCK && playerSelection === SCISSORS){
             document.querySelector(".computer").innerText = `${computerSelection}`
             document.querySelector(".battle").innerText = "You Lose! Rock beats Scissors";
+            computerScore += 1
+            document.querySelector(".computerScore").innerText = `Computer Score: ${computerScore}`
         // the logic in case computer chooses paper
-        }else if(computerSelection === PAPER && playerSelection === ROCK){
-            document.querySelector(".computer").innerText = `${computerSelection}`
-            document.querySelector(".battle").innerText = "You Lose! Paper beats Rock";
         }else if(computerSelection === PAPER && playerSelection === SCISSORS){
             document.querySelector(".computer").innerText = `${computerSelection}`
             document.querySelector(".battle").innerText = "You Win! Scissors beats Paper";
+            playerScore += 1
+            document.querySelector(".playerScore").innerText = `Player Score: ${playerScore}`
+        }else if(computerSelection === PAPER && playerSelection === ROCK){
+            document.querySelector(".computer").innerText = `${computerSelection}`
+            document.querySelector(".battle").innerText = "You Lose! Paper beats Rock";
+            computerScore += 1
+            document.querySelector(".computerScore").innerText = `Computer Score: ${computerScore}`
         // the logic in case computer chooses scissors
         }else if(computerSelection === SCISSORS && playerSelection === ROCK){
             document.querySelector(".computer").innerText = `${computerSelection}`
             document.querySelector(".battle").innerText = "You Win! Rock beats Scissors";
+            playerScore += 1
+            document.querySelector(".playerScore").innerText = `Player Score: ${playerScore}`
         }else if (computerSelection === SCISSORS && playerSelection === PAPER){
             document.querySelector(".computer").innerText = `${computerSelection}`
             document.querySelector(".battle").innerText = "You Lose! Scissors beats Paper";
+            computerScore += 1
+            document.querySelector(".computerScore").innerText = `Computer Score: ${computerScore}`
         // Checks for a tie
         }else{
             document.querySelector(".computer").innerText = `${computerSelection}`
