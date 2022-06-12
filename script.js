@@ -3,6 +3,18 @@ const ROCK = "Rock";
 const PAPER = "Paper";
 const SCISSORS = "Scissors";
 
+
+// Selects button classes 
+const player = document.querySelector(".player");
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+
+// Buttons for player to choose rock paper or scissors
+rockBtn.addEventListener('click', playerChoice);
+paperBtn.addEventListener('click', playerChoice);
+scissorsBtn.addEventListener('click', playerChoice);
+
 // Game Counters
 let playerScore = 0
 let computerScore = 0
@@ -25,41 +37,30 @@ function computerPlay(){
     return computerChoice;
 }
 
-// Selects button classes 
-const player = document.querySelector(".player");
-const rockBtn = document.querySelector(".rock");
-const paperBtn = document.querySelector(".paper");
-const scissorsBtn = document.querySelector(".scissors");
-
-// Buttons for player to choose rock paper or scissors
-rockBtn.addEventListener('click', playerChoice);
-paperBtn.addEventListener('click', playerChoice);
-scissorsBtn.addEventListener('click', playerChoice);
-
 // Button functionality
 function playerChoice(){
     // Rock Button
     rockBtn.onclick = ()=>{
         let playerSelection = ROCK;
         let computerSelection = computerPlay();
-        return playRound(playerSelection, computerSelection);
+        return play(playerSelection, computerSelection);
     }
     // Paper Button
     paperBtn.onclick = ()=>{
         let playerSelection = PAPER;
         let computerSelection = computerPlay();
-        return playRound(playerSelection, computerSelection);
+        return play(playerSelection, computerSelection);
     }
     // Scissors Button
     scissorsBtn.onclick = () =>{
         let playerSelection = SCISSORS;
         let computerSelection = computerPlay();
-        return playRound(playerSelection, computerSelection);
+        return play(playerSelection, computerSelection);
     }
 }
 
 // Game logic
-function playRound(playerSelection, computerSelection){
+function play(playerSelection, computerSelection){
         // the logic in case computer chooses rock
         if (computerSelection === ROCK && playerSelection === PAPER){
             document.querySelector(".computer").innerText = `${computerSelection}`
@@ -97,5 +98,20 @@ function playRound(playerSelection, computerSelection){
         }else{
             document.querySelector(".computer").innerText = `${computerSelection}`
             document.querySelector(".battle").innerText = "It\'s a Tie!";
+        }
+        if (computerScore === 5){
+            alert("Computer Wins!");
+            if(confirm("play again?")){
+                window.location.reload();
+            }else{
+                window.close();
+            }
+        }else if (playerScore === 5){
+            alert("PLayer Wins!")
+            if(confirm("play again?")){
+                window.location.reload();
+            }else{
+                window.close();
+            }
         }
 }
