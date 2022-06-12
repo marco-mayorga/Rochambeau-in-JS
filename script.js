@@ -39,22 +39,20 @@ function computerPlay(){
 
 // Button functionality
 function playerChoice(){
+    let computerSelection = computerPlay();
     // Rock Button
     rockBtn.onclick = ()=>{
         let playerSelection = ROCK;
-        let computerSelection = computerPlay();
         return play(playerSelection, computerSelection);
     }
     // Paper Button
     paperBtn.onclick = ()=>{
         let playerSelection = PAPER;
-        let computerSelection = computerPlay();
         return play(playerSelection, computerSelection);
     }
     // Scissors Button
     scissorsBtn.onclick = () =>{
         let playerSelection = SCISSORS;
-        let computerSelection = computerPlay();
         return play(playerSelection, computerSelection);
     }
 }
@@ -107,7 +105,7 @@ function play(playerSelection, computerSelection){
                 window.close();
             }
         }else if (playerScore === 5){
-            alert("PLayer Wins!")
+            alert("Player Wins!")
             if(confirm("play again?")){
                 window.location.reload();
             }else{
